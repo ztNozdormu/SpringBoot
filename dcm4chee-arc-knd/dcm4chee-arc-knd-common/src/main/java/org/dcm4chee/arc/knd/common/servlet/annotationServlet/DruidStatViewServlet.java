@@ -1,4 +1,4 @@
-package org.dcm4chee.arc.knd.common.servlet;
+package org.dcm4chee.arc.knd.common.servlet.annotationServlet;
 
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
