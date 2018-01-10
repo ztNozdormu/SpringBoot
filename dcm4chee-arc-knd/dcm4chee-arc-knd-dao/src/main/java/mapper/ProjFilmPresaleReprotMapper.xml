@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dcm4chee.arc.knd.dao.mapper.ProjFilmPresaleReprotMapper">
+  <resultMap id="BaseResultMap" type="org.dcm4chee.arc.knd.entity.model.ProjFilmPresaleReprot">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="LOG_NR_" jdbcType="BIGINT" property="logNr" />
+    <result column="TYPE_" jdbcType="VARCHAR" property="type" />
+    <result column="PROC_DEF_ID_" jdbcType="VARCHAR" property="procDefId" />
+    <result column="PROC_INST_ID_" jdbcType="VARCHAR" property="procInstId" />
+    <result column="EXECUTION_ID_" jdbcType="VARCHAR" property="executionId" />
+    <result column="TASK_ID_" jdbcType="VARCHAR" property="taskId" />
+    <result column="TIME_STAMP_" jdbcType="TIMESTAMP" property="timeStamp" />
+    <result column="USER_ID_" jdbcType="VARCHAR" property="userId" />
+    <result column="LOCK_OWNER_" jdbcType="VARCHAR" property="lockOwner" />
+    <result column="LOCK_TIME_" jdbcType="TIMESTAMP" property="lockTime" />
+    <result column="IS_PROCESSED_" jdbcType="TINYINT" property="isProcessed" />
+    <result column="DATA_" jdbcType="LONGVARBINARY" property="data" />
+  </resultMap>
+</mapper>
