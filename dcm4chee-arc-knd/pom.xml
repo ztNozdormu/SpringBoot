@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.dcm4che.dcm4chee-arc</groupId>
+  <artifactId>dcm4chee-arc-knd</artifactId>
+  <version>5.10.5</version>
+  <packaging>pom</packaging>
+
+  <name>dcm4chee-arc-knd</name>
+  <url>http://maven.apache.org</url>
+   <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.version>5.10.5</project.version>
+        <java.version>1.8</java.version>
+        <logback.version>1.2.3</logback.version>
+        <druid.version>1.1.5</druid.version>
+        <boot.version>1.5.9.RELEASE</boot.version>
+        <mysqlDriver.version>6.0.6</mysqlDriver.version>
+        <swagger.version>2.6.0</swagger.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <servlet.version>3.1.0</servlet.version>
+        <servlet-api.version>3.0.1</servlet-api.version>
+        <!-- springboot工程打包成war执行 -->
+        <boot-legacy.version>1.0.2.RELEASE</boot-legacy.version>
+        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        <!-- SpringBoot集成Mybatis 方式一 -->
+        <mybatis.boot.version>1.3.0</mybatis.boot.version>
+        <tkMapper.boot.version>1.1.5</tkMapper.boot.version>
+        <pagehelper.boot.version>1.1.1</pagehelper.boot.version>
+        <!-- Mybatis集成方式二 -->
+        <mybatis-spring.version>1.3.1</mybatis-spring.version>
+        <mybatis.version>3.4.1</mybatis.version>
+        <!-- 分页插件 -->
+        <pagehelper.version>5.1.2</pagehelper.version>
+        <!-- 通用mapper -->
+        <tk.mybatis.version>3.4.3</tk.mybatis.version>
+        <!-- 通用mapper相关的依赖 -->
+        <persistence-api.version>1.0</persistence-api.version>
+         <!-- MyBatis Generator -->  
+        <mybatis-generator.version>1.3.5</mybatis-generator.version>
+        <!-- Java接口和实体类 -->  
+        <targetJavaProject>dcm4chee-arc-knd/src/main/java</targetJavaProject>  
+        <targetMapperPackage>org.dcm4chee.arc.knd.dao.mapper</targetMapperPackage>  
+        <targetModelPackage>org.dcm4chee.arc.knd.entity.model</targetModelPackage>  
+        <!-- XML生成路径 -->  
+        <targetResourcesProject>${basedir}/src/main/resources/mapper</targetResourcesProject>  
+        <targetXMLPackage>mapper</targetXMLPackage>
+  </properties>
+  	 <dependencyManagement>
+    <dependencies>
+      <!--ImportdependencymanagementfromSpringBoot -->
+			  <dependency>
+				    <groupId>org.springframework.boot</groupId>
+				    <artifactId>spring-boot-dependencies</artifactId>
+				    <version>${boot.version}</version>
+				    <type>pom</type>
+				    <scope>import</scope>
+			  </dependency>
+		      <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                    <!--不需要打包成一个war包,或者说不用内置的spring容器，-->
+                    <exclusions>
+                       <exclusion>
+                           <groupId>org.springframework.boot</groupId>
+                           <artifactId>spring-boot-starter-tomcat</artifactId>
+                       </exclusion>
+                    </exclusions>
+               </dependency>
+           <!-- 添加 Undertow容器依赖 -->
+               <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-undertow</artifactId>
+                    <exclusions>
+                        <exclusion>
+                            <artifactId>jboss-logging</artifactId>
+                            <groupId>org.jboss.logging</groupId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+			<!--如果要把springboot工程打包成war执行，需要该jar -->  
+<!--             <dependency>   -->
+<!--                 <groupId>org.springframework.boot</groupId>-->
+<!--                 <artifactId>spring-boot-legacy</artifactId>-->
+<!--                 <version>${boot-legacy.version}</version>-->
+<!--             </dependency> -->
+		   <!-- spring boot 配置处理器 1.4后可加可不加 -->
+<!-- 		    <dependency> -->
+<!-- 	           <groupId>org.springframework.boot</groupId> -->
+<!-- 	           <artifactId>spring-boot-configuration-processor</artifactId> -->
+<!-- 	           <optional>true</optional> -->
+<!--            </dependency> -->
+                <!--实体字段后台校验 该版本没有冲突问题 -->
+			   	<dependency>  
+				    <groupId>org.hibernate</groupId>  
+				    <artifactId>hibernate-validator</artifactId>  
+			   	</dependency>
+                <!--SpringBoot 单元测试-->
+	          	<dependency>  
+			      <groupId>org.springframework.boot</groupId>  
+			      <artifactId>spring-boot-starter-test</artifactId>  
+			   	</dependency>  
+			   	<!-- SpringBoot集成Mybatis -->
+			  <!--mybatis 方式一-->
+		        <dependency>
+		            <groupId>org.mybatis.spring.boot</groupId>
+		            <artifactId>mybatis-spring-boot-starter</artifactId>
+		        </dependency>
+		         <!--通用mapper-->
+		        <dependency>
+		            <groupId>tk.mybatis</groupId>
+		            <artifactId>mapper-spring-boot-starter</artifactId>
+		        </dependency>
+		         <!--分页pagehelper-->
+		        <dependency>
+		            <groupId>com.github.pagehelper</groupId>
+		            <artifactId>pagehelper-spring-boot-starter</artifactId>
+		        </dependency>
+		        
+<!--                 <dependency>方式二 -->
+<!-- 		            <groupId>org.mybatis</groupId> -->
+<!-- 		            <artifactId>mybatis-spring</artifactId> -->
+<!-- 		        </dependency> -->
+<!-- 		        <dependency> -->
+<!-- 		            <groupId>org.mybatis</groupId> -->
+<!-- 		            <artifactId>mybatis</artifactId> -->
+<!-- 		        </dependency> -->
+                <!-- 通用mapper集成 --> 
+<!--                 <dependency> -->
+<!-- 				    <groupId>tk.mybatis</groupId> -->
+<!-- 				    <artifactId>mapper</artifactId> -->
+<!-- 				</dependency> -->
+<!-- 				<dependency> -->
+<!-- 				    <groupId>javax.persistence</groupId> -->
+<!-- 				    <artifactId>persistence-api</artifactId> -->
+<!-- 	           </dependency> -->
+                <!--分页插件-->  
+<!-- 			   <dependency> -->
+<!-- 				      <groupId>com.github.pagehelper</groupId> -->
+<!-- 				      <artifactId>pagehelper</artifactId> -->
+<!--                </dependency> -->
+                 <!--添加适用于生产环境的功能，如性能指标和监测等功能。 -->
+		       <dependency>
+		           <groupId>org.springframework.boot</groupId>
+		           <artifactId>spring-boot-starter-actuator</artifactId>
+		       </dependency>
+		          <!-- Mybatis Generator -->  
+		       <dependency>  
+		            <groupId>org.mybatis.generator</groupId>  
+		            <artifactId>mybatis-generator-core</artifactId>  
+		            <scope>compile</scope>  
+		            <optional>true</optional>  
+		       </dependency>  
+     </dependencies>
+   </dependencyManagement>
+   <build>  
+    <finalName>dcm4chee-arc-knd</finalName>
+        <plugins>  
+             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>utf-8</encoding>
+                </configuration>  
+             </plugin>
+             <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+<!--                     <dependency> -->
+<!--                         <groupId>tk.mybatis</groupId> -->
+<!--                         <artifactId>mapper</artifactId> -->
+<!--                         <version>${tk.mybatis}</version> -->
+<!--                     </dependency> -->
+			        <dependency>
+			            <groupId>tk.mybatis</groupId>
+			            <artifactId>mapper-spring-boot-starter</artifactId>
+			            <version>${tkMapper.boot.version}</version>
+			        </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>  
+    </build>  
+  <modules>
+    <module>dcm4chee-arc-knd-common</module>
+    <module>dcm4chee-arc-knd-dao</module>
+    <module>dcm4chee-arc-knd-entity</module>
+    <module>dcm4chee-arc-knd-service</module>
+    <module>dcm4chee-arc-knd-start</module>
+    <module>dcm4chee-arc-knd-util</module>
+    <module>dcm4chee-arc-knd-web</module>
+  </modules>
+</project>
