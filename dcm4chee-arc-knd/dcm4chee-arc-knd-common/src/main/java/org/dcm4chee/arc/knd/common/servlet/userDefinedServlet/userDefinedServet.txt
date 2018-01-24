@@ -1,3 +1,6 @@
 自定义的Servlet
 1.继承HttpServlet
 2.重写doGet(),doPost()方法
+3.自定义Servlet在SpringBoot中的使用
+  一、代码注册通过ServletRegistrationBean、 FilterRegistrationBean 和 ServletListenerRegistrationBean 获得控制。 
+        也可以通过实现 ServletContextInitializer 接口直接注册

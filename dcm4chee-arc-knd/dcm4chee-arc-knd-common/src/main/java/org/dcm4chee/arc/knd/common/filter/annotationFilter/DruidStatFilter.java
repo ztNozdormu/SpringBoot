@@ -1,4 +1,4 @@
-package org.dcm4chee.arc.knd.common.filter;
+package org.dcm4chee.arc.knd.common.filter.annotationFilter;
 
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebInitParam;
 import com.alibaba.druid.support.http.WebStatFilter;
 
 /**
+ * 注解方式
  * 配置druid监控统计功能
  * 配置Filter
  *
