@@ -76,6 +76,7 @@ SpringBoot集成Mybatis:
               2.在启动类上使用@ServletComponentScan
               3.自定义类继承HttpServlet,具体实现与代码方式一样，只是注册是通过注解自动注册
       SpringBoot自定义过滤器实现
+               使用场景:过滤请web求
         1.创建一个类 2.implements Filter 3.根据业务重写方法:doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
                 参考网址:http://blog.csdn.net/sun_t89/article/details/51916834
                http://blog.csdn.net/long290046464/article/details/76559880
@@ -89,9 +90,16 @@ SpringBoot集成Mybatis:
 				5）、在servlet被调用之后截获.
       SpringBoot自定义监听器实现
                 参考网址:http://blog.csdn.net/liaokailin/article/details/48186331
+                @WebListener 
       SpringBoot自定义拦截器实现
-    
+             参考网址:http://blog.csdn.net/catoop/article/details/50501696
+        补充参考网址:http://www.jianshu.com/p/c0c2fce3976d
+      使用场景: HandlerInterceptor 的功能跟过滤器类似，但是提供更精细的的控制能力：在request被响应之前、request被响应之后、视图渲染之前以及request全部结束之后。我们不能通过拦截器修改request内容，但是可以通过抛出异常（或者返回false）来暂停request的执行。
+       比如防xss攻击，在调用controller前对提交内容进行过滤等等
+        
       SpringBoot全局异常处理的实现:
+               参考博客:https://www.cnblogs.com/java-zhao/p/5769018.html
+               参考博客:http://blog.csdn.net/tianyaleixiaowu/article/details/70145251
       SpringBoot全局统一返回格式的数据处理:
       
       --------------------------------------------------扩展模块的集成-------------------------------------------------
